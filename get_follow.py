@@ -1,6 +1,7 @@
 from lexer import lexer
 from constants import grammers
-from get_first import First
+from get_first import First ,holder_first
+
 holder_follow = []
 visited = set()
 key_list = grammers.keys()
@@ -11,11 +12,9 @@ def Follow(grammer):
     if grammer in visited:
         return
     visited.add(grammer)
-    
     if grammer == 'Start':
         holder_follow.append('$')
         return
-    
     for non_terminal, productions in grammers.items():
         for production in productions:
             items = production.split()
