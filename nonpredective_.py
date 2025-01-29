@@ -1,7 +1,11 @@
 from lexer import lexer
 from constants import dic_col , dic_row, grammers , rows , columns
+
+import read_cpp_file
+
 def NonPredctive():
-    code = input("Enter your code: \n")
+    file_path = input("Enter the file path: ")
+    code = read_cpp_file.open_cpp_file(file_path)
     tokens = lexer(code)
     a = []
     key_list = grammers.keys()

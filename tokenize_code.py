@@ -1,8 +1,11 @@
 import lexer
 from rich.console import Console
+
+import read_cpp_file
+
 def Tokenize():
-    print("Input the code")
-    code = input()
+    file_path = input("Enter the file path: ")
+    code = read_cpp_file.open_cpp_file(file_path)
     console = Console()
     tokens = lexer.lexer(code)
     lines = []

@@ -1,10 +1,13 @@
 import lexer
 from rich.console import Console
 from rich.table import Table
+
+import read_cpp_file
+
 from hashlib import sha256
 def Print_Table():
-    print("Input the code")
-    code = input()
+    file_path = input("Enter the file path: ")
+    code = read_cpp_file.open_cpp_file(file_path)
     console = Console()
     tokens = lexer.lexer(code)
     table = Table(title="Token Table")

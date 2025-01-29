@@ -1,7 +1,7 @@
 from rich.console import Console
 from rich.table import Table
-
 import os
+
 import token_table
 import parse_table
 import tokenize_code
