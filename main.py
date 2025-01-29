@@ -2,6 +2,7 @@ from rich.console import Console
 from rich.table import Table
 import os
 
+import nonpredective
 import token_table
 import parse_table
 import tokenize_code
@@ -16,6 +17,7 @@ def show_menu():
     table.add_row("1", "Tokenize")
     table.add_row("2", "Token Table")
     table.add_row("3", "Parse Table")
+    table.add_row("4", "Parse Tree")
     table.add_row("4", "Exit")
 
     console.print(table)
@@ -33,8 +35,9 @@ def main():
             token_table.Print_Table()
         elif option == "3":
             parse_table.Print_Parse_Table()
-
         elif option == "4":
+            nonpredective.NonPredctive()
+        elif option == "5":
             ProgramContinue = False
             break
         else:

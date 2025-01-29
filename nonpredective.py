@@ -1,3 +1,9 @@
+from anytree import Node, RenderTree
+from anytree.exporter import DotExporter
+from rich.console import Console
+from rich.table import Table
+
+
 from lexer import lexer
 from constants import dic_col , dic_row, grammers , rows , columns
 
@@ -17,7 +23,6 @@ def NonPredctive():
         n = dic_col[a[0]]
         m = dic_row[head]
         if head == a[0]:
-            print(a[0])
             a.pop(0)
         elif head not in key_list:
             print("not possible")
@@ -27,7 +32,24 @@ def NonPredctive():
             b = rows[m][n].split()
             for i in b:
                 stack.append(i)
-            print(b)
+            break
         else:
             print("not possible")
             break
+    root = Node("Parse Tree")
+    for row in rows:
+        parent_node = Node(row[0], parent=root)
+        for i in range(1, len(row)):
+            if row[i]:
+                Node(f"{columns[i]}: {row[i]}", parent=parent_node)
+    for pre, fill ,node in RenderTree(root):
+        print("%s%s" % (pre, node.name))
+
+"""
+O(n) for reading the file and tokenizing the code.
+O(t) for processing tokens.
+O(t) for parsing with the stack.
+O(r * c) for building the parse tree.
+O(n) for rendering the parse tree.
+overall :  O(n + t + r * c)
+"""

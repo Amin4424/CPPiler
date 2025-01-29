@@ -49,3 +49,9 @@ def Follow(grammer):
         if item not in final_holder and item !='ϵ':
             final_holder.append(item)
     return final_holder
+"""
+The outer loop runs (O(N)) times.
+The inner loop runs (O(P)) times.
+The operations inside the inner loop, including the construction of right_hand and the nested loops, run (O(L)) times.
+Overall: O(N * P * L)
+"""

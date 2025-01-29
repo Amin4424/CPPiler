@@ -14,3 +14,6 @@ def First(grammer):
         else:
             holder_first.append(production)
     return holder_first
+"""
+O(N * M * L)
+"""
